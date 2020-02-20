@@ -5,26 +5,26 @@
 #     strategy_description: a string
 #     move: A function that returns 'c' or 'b'
 ####
-
-team_name = 'Alcatraz' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
-    
+ 
+team_name = 'Alcatraz'
+strategy_name = 'Probability'
+strategy_description = 'Based on their history, betray or collude. If they have colluded more than 75% of the time, then collude as well. Otherwise, betray.'
+  
 def move(my_history, their_history, my_score, their_score):
-    ''' Arguments accepted: my_history, their_history are strings.
-    my_score, their_score are ints.
-    
-    Make my move.
-    Returns 'c' or 'b'. 
-    '''
+ num_collude = 0
+ num_betray = 0
+ if len(my_history) == 0:
+   return 'c'
+ else:
+   for char in their_history:
+    if char == 'c':
+      num_collude += 1
+    if char == 'b':
+       num_betray += 1
+    percent_collude = float(num_collude / len(their_history))
+   if percent_collude >= 0.75:
+     return 'c'
+   else:
+     return 'b'
 
-    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
-    # their_history: a string of the same length as history, possibly empty. 
-    # The first round between these two players is my_history[0] and their_history[0].
-    # The most recent round is my_history[-1] and their_history[-1].
-    
-    # Analyze my_history and their_history and/or my_score and their_score.
-    # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
 
