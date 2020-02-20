@@ -7,8 +7,8 @@
 ####
 
 team_name = 'Collusion' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+strategy_name = 'Tit for Tat with forgiveness'
+strategy_description = 'Does what the other person does with a chance to collude randomly?'
     
 
 import random
